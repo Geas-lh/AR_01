@@ -1,51 +1,77 @@
-﻿/*
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
-/**
- * Our car will track a reticle and collide with a <see cref="PackageBehaviour"/>.
- */
 public class CarBehaviour : MonoBehaviour
 {
     public ReticleBehaviour Reticle;
     public float Speed = 1.2f;
 
+    [Header("UI")]
+    public TMP_Text scoreText;
+    public TMP_Text timerText;
+    public GameObject gameOverUI;
+
+    private int score = 0;
+    private float timer = 20f;
+    private float currentTime = 0f;
+    private bool timerActive = false;
+    private float minTime = 1f;
+
     private void Update()
     {
+        if (Reticle == null) return;
+
         var trackingPosition = Reticle.transform.position;
-        if (Vector3.Distance(trackingPosition, transform.position) < 0.1)
+
+        if (Vector3.Distance(trackingPosition, transform.position) > 0.1f)
         {
-            return;
+            var lookRotation = Quaternion.LookRotation(trackingPosition - transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+            transform.position = Vector3.MoveTowards(transform.position, trackingPosition, Speed * Time.deltaTime);
         }
 
-        var lookRotation = Quaternion.LookRotation(trackingPosition - transform.position);
-        transform.rotation =
-            Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
-        transform.position =
-            Vector3.MoveTowards(transform.position, trackingPosition, Speed * Time.deltaTime);
+        // 🔹 Control del temporizador
+        if (timerActive)
+        {
+            currentTime -= Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                timerActive = false;
+                gameOverUI?.SetActive(true);
+            }
+            UpdateTimerUI();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        var Package = other.GetComponent<PackageBehaviour>();
-        if (Package != null)
+        var package = other.GetComponent<PackageBehaviour>();
+        if (package != null)
         {
             Destroy(other.gameObject);
+            score++;
+            UpdateScoreUI();
+
+            // 🔹 Iniciar el temporizador si aún no empezó
+            if (!timerActive)
+                timerActive = true;
+
+            // 🔹 Reiniciar el tiempo, reduciendo 1 segundo hasta el mínimo
+            timer = Mathf.Max(minTime, timer - 1f);
+            currentTime = timer;
         }
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+            scoreText.text = $"Score: {score}";
+    }
+
+    private void UpdateTimerUI()
+    {
+        if (timerText != null)
+            timerText.text = $"Time: {Mathf.Ceil(currentTime)}";
     }
 }

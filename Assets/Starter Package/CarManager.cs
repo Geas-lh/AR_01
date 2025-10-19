@@ -1,17 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using TMPro; // Importante para los textos TMP
+using TMPro;
 
-/**
- * Spawns a <see cref="CarBehaviour"/> when a plane is tapped.
- */
 public class CarManager : MonoBehaviour
 {
     public GameObject CarPrefab;
     public ReticleBehaviour Reticle;
     public DrivingSurfaceManager DrivingSurfaceManager;
 
+    public GameManager gameManager; // 👈 Nueva referencia al GameManager
     public CarBehaviour Car;
 
     private void Update()
@@ -27,7 +25,7 @@ public class CarManager : MonoBehaviour
             // 🔹 Asignar referencias automáticamente
             Car.scoreText = GameObject.Find("ScoreText")?.GetComponent<TMP_Text>();
             Car.timerText = GameObject.Find("TimerText")?.GetComponent<TMP_Text>();
-            Car.gameOverUI = GameObject.Find("GameOverUI");
+            Car.gameManager = gameManager; // 👈 Ahora pasamos la referencia del GameManager
 
             DrivingSurfaceManager.LockPlane(Reticle.CurrentPlane);
         }

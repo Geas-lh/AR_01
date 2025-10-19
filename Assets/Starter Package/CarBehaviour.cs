@@ -10,7 +10,9 @@ public class CarBehaviour : MonoBehaviour
     [Header("UI")]
     public TMP_Text scoreText;
     public TMP_Text timerText;
-    public GameObject gameOverUI;
+
+    [Header("Referencias")]
+    public GameManager gameManager; // 👈 Nueva referencia al GameManager
 
     private int score = 0;
     private float timer = 20f;
@@ -38,7 +40,7 @@ public class CarBehaviour : MonoBehaviour
             if (currentTime <= 0)
             {
                 timerActive = false;
-                gameOverUI?.SetActive(true);
+                gameManager?.TriggerGameOver(); // 👈 Avisamos al GameManager
             }
             UpdateTimerUI();
         }

@@ -1,0 +1,91 @@
+# Blender MTL File: 'superhero.blend'
+# Material Count: 8
+
+newmtl Material.002
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd glass_shared.png
+map_d glass_shared.png
+
+newmtl breakfast_eye_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd breakfast_eye_color.png
+
+newmtl superhero_costume_captainbreakfast_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.100000 0.100000 0.100000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd superhero_costume_captainbreakfast_color.png
+
+newmtl superhero_costume_captainbreakfastaccessories_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.050000 0.050000 0.050000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd superhero_costume_captainbreakfastaccessories_color.png
+
+newmtl superhero_head_captainbrainz_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:\\Users\\ipodv\\Documents\\FrostyEditor_v1.0.4.5\\ripped gw2 models\\Super Brainz\\superhero_head_captainbrainz_color.png
+
+newmtl superhero_headprop_captainbreakfast_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd superhero_headprop_captainbreakfast_color.png
+
+newmtl superhero_headprop_captainbreakfasttoaster_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.150000 0.150000 0.150000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd superhero_headprop_captainbreakfasttoaster_color.png
+
+newmtl superhero_headprop_captainbreakfasttoaster_visor_eye_color
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd superhero_headprop_captainbreakfasttoaster_visor_eye_color.png

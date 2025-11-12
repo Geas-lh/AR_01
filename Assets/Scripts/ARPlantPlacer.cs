@@ -16,7 +16,6 @@ public class ARPlantPlacer : MonoBehaviour
 
     [Header("Offsets y límites")]
     [SerializeField] private Vector3 offset = Vector3.up * 0.05f;
-    [SerializeField] private float distanciaMaxima = 10f;
 
     private static readonly List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
